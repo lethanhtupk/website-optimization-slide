@@ -9,6 +9,7 @@
     "@slidev/cli": "^0.30.3",
     "@slidev/theme-default": "*",
     "@slidev/theme-seriph": "*",
+    "colorette": "^2.0.16",
     "slidev-theme-unicorn": "^1.0.21"
   },
   "name": "optimize-performance-slide"

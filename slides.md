@@ -22,30 +22,15 @@ drawings:
 handle: 'tult'
 website: 'https://rikkeisoft.com'
 layout: 'intro'
-introImage: '/public/intro.jpg'
-
+introImage: '/intro.jpg'
 ---
-
 
 # Website optimization
 
 How to improve the performance of a website
 
-<!-- <div class="pt-12">
-  <span @click="$slidev.nav.next" class="px-2 py-1 rounded cursor-pointer" hover="bg-white bg-opacity-10">
-    Press Space for next page <carbon:arrow-right class="inline"/>
-  </span>
-</div>
+<img src="/intro.jpg" class="absolute top-20 left-20 rounded-full w-80 h-80 object-cover p-2 bg-gradient-to-r from-fuchsia-700 to-purple-800 dark:from-white dark:to-purple-50">
 
-<div class="abs-br m-6 flex gap-2">
-  <button @click="$slidev.nav.openInEditor()" title="Open in Editor" class="text-xl icon-btn opacity-50 !border-none !hover:text-white">
-    <carbon:edit />
-  </button>
-  <a href="https://github.com/slidevjs/slidev" target="_blank" alt="GitHub"
-    class="text-xl icon-btn opacity-50 !border-none !hover:text-white">
-    <carbon-logo-github />
-  </a>
-</div> -->
 
 <!--
 The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
@@ -59,16 +44,16 @@ website: 'https://rikkeisoft.com'
 ---
 
 <style>
-  img {
-    @apply w-80 h-80 object-cover;
+  figure img.rounded-full {
+    @apply w-10 h-10
   }
 </style>
-
 
 # Table of contents
 
 1. Why speed matters? 
-2. How the browser render a web page?
+2. What factors affect website load time?
+3. How the browser renders a webpage?
 
 <!--
 You can have `style` tag in markdown to override the style for the current page.
@@ -91,11 +76,11 @@ h1 {
 layout: new-section
 handle: 'tult'
 website: 'https://rikkeisoft.com'
-sectionImage: '/public/section-illustration.svg'
+sectionImage: '/section-illustration.svg'
 ---
 
 # Why speed matters? 
-
+Website load time affects the number of visitors.
 
 ---
 layout: cover
@@ -112,176 +97,72 @@ The longger a webpage takes to load, the more it bounce rate will skyrocket
 The high bounce rate tells search engines that this page is useless, so its ranking will slip
 <lucide-trending-down class="text-red-600" />
 <br>
-<br>
-<img class="w-3/4" src="/public/did-you-know.webp" />
+<div class="flex flex-row relative">
+  <img class="w-3/5 object-contain" src="/did-you-know.webp" />
+  <img class="absolute -right-36 -bottom-32 w-3/5 object-contain" src="/bounce-rate-statistics.webp" />
+</div>
 
+---
+layour: cover
+handle: 'tult'
+website: 'https://rikkeisoft.com'
 --- 
 
-# Components
+# What factor affect website load time?
 
-<div grid="~ cols-2 gap-4">
-<div>
-
-You can use Vue components directly inside your slides.
-
-We have provided a few built-in components like `<Tweet/>` and `<Youtube/>` that you can use directly. And adding your custom components is also super easy.
-
-```html
-<Counter :count="10" />
-```
-
-<!-- ./components/Counter.vue -->
-<Counter :count="10" m="t-4" />
-
-Check out [the guides](https://sli.dev/builtin/components.html) for more.
-
-</div>
-<div>
-
-```html
-<Tweet id="1390115482657726468" />
-```
-
-<Tweet id="1390115482657726468" scale="0.65" />
-
-</div>
-</div>
+- User's internet connection
+- Web hoisting and user's computer
+- The size of the resources that needed
 
 
 ---
-class: px-20
+layout: new-section
+handle: 'tult'
+website: 'https://rikkeisoft.com'
 ---
 
-# Themes
+# How the browser render a webpage
 
-Slidev comes with powerful theming support. Themes can provide styles, layouts, components, or even configurations for tools. Switching between themes by just **one edit** in your frontmatter:
-
-<div grid="~ cols-2 gap-2" m="-t-2">
-
-```yaml
----
-theme: default
----
-```
-
-```yaml
----
-theme: seriph
----
-```
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-default/01.png?raw=true">
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-seriph/01.png?raw=true">
-
-</div>
-
-Read more about [How to use a theme](https://sli.dev/themes/use.html) and
-check out the [Awesome Themes Gallery](https://sli.dev/themes/gallery.html).
+Deep dive into the rendering process and figure out where can be optimized.
 
 ---
-preload: false
+layout: cover
+handle: 'tult'
+website: 'https://rikkeisoft.com'
 ---
 
-# Animations
+# DOM
 
-Animations are powered by [@vueuse/motion](https://motion.vueuse.org/).
-
-```html
-<div
-  v-motion
-  :initial="{ x: -80 }"
-  :enter="{ x: 0 }">
-  Slidev
-</div>
-```
-
-<div class="w-60 relative mt-6">
-  <div class="relative w-40 h-40">
-    <img
-      v-motion
-      :initial="{ x: 800, y: -100, scale: 1.5, rotate: -50 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-square.png"
-    />
-    <img
-      v-motion
-      :initial="{ y: 500, x: -100, scale: 2 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-circle.png"
-    />
-    <img
-      v-motion
-      :initial="{ x: 600, y: 400, scale: 2, rotate: 100 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-triangle.png"
-    />
+<div class="flex flex-row">
+  <div class="w-2/3">
+    - DOM stands for document object model <br>
+    - When browser encounters a HTML element, it creates a JavaScript object called a node. <br>
+    - After create a node, the browser has to create a **tree-like structure** of created nodes.
   </div>
-
-  <div
-    class="text-5xl absolute top-14 left-40 text-[#2B90B6] -z-1"
-    v-motion
-    :initial="{ x: -80, opacity: 0}"
-    :enter="{ x: 0, opacity: 1, transition: { delay: 2000, duration: 1000 } }">
-    Slidev
+  <div class="w-1/3 pl-4">
+    <img class="object-contain" src="/DOM.png">
   </div>
 </div>
 
-<!-- vue script setup scripts can be directly used in markdown, and will only affects current page -->
-<script setup lang="ts">
-const final = {
-  x: 0,
-  y: 0,
-  rotate: 0,
-  scale: 1,
-  transition: {
-    type: 'spring',
-    damping: 10,
-    stiffness: 20,
-    mass: 2
-  }
-}
-</script>
-
-<div
-  v-motion
-  :initial="{ x:35, y: 40, opacity: 0}"
-  :enter="{ y: 0, opacity: 1, transition: { delay: 3500 } }">
-
-[Learn More](https://sli.dev/guide/animations.html#motion)
-
-</div>
-
+---
+layout: cover
+andle: 'tult'
+website: 'https://rikkeisoft.com'
 ---
 
-# LaTeX
+# CSSOM
 
-LaTeX is supported out-of-box powered by [KaTeX](https://katex.org/).
+<div class="flex flex-row">
+  <div class="w-2/3">
+    - CSS stands for CSS object model <br>
+    - When browser encounters a HTML element, it creates a JavaScript object called a node. <br>
+    - After create a node, the browser has to create a **tree-like structure** of created nodes.
+  </div>
+  <div class="w-1/3 pl-4">
+    <img class="object-contain" src="/CSSOM.png">
+  </div>
+</div>
 
-<br>
-
-Inline $\sqrt{3x-1}+(1+x)^2$
-
-Block
-$$
-\begin{array}{c}
-
-\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} &
-= \frac{4\pi}{c}\vec{\mathbf{j}}    \nabla \cdot \vec{\mathbf{E}} & = 4 \pi \rho \\
-
-\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t} & = \vec{\mathbf{0}} \\
-
-\nabla \cdot \vec{\mathbf{B}} & = 0
-
-\end{array}
-$$
-
-<br>
-
-[Learn more](https://sli.dev/guide/syntax#latex)
 
 ---
 
