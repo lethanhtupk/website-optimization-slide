@@ -137,7 +137,7 @@ website: 'https://rikkeisoft.com'
   <div class="w-2/3">
     - DOM stands for document object model <br>
     - When browser encounters a HTML element, it creates a JavaScript object called a node. <br>
-    - After create a node, the browser has to create a **tree-like structure** of created nodes.
+    - After create a node, the browser has to create a <span class="font-bold">tree-like structure</span> of created nodes.
   </div>
   <div class="w-1/3 pl-4">
     <img class="object-contain" src="/DOM.png">
@@ -154,9 +154,9 @@ website: 'https://rikkeisoft.com'
 
 <div class="flex flex-row">
   <div class="w-2/3">
-    - CSS stands for CSS object model <br>
-    - When browser encounters a HTML element, it creates a JavaScript object called a node. <br>
-    - After create a node, the browser has to create a **tree-like structure** of created nodes.
+    - CSSOM stands for CSS object model <br>
+    - After the browser has done constructing the DOM, it'll read CSS from all the sources (external, embedded, inline, user-agent, etc.) to construct CSSOM. <br>
+    - Each node in CSSOM tree contains the style information that will be applied to DOM elements that it target. 
   </div>
   <div class="w-1/3 pl-4">
     <img class="object-contain" src="/CSSOM.png">
@@ -165,71 +165,27 @@ website: 'https://rikkeisoft.com'
 
 
 ---
+layout: cover
+handle: 'tult'
+website: 'https://rikkeisoft.com'
+---
 
-# Diagrams
+# Render tree
 
-You can create diagrams / graphs from textual descriptions, directly in your Markdown.
+- This is **tree-like structure** constructed by combining DOM and CSSOM trees together. 
+- The browser calculate the layout for each **visible elements** and paint them on the screen.
 
-<div class="grid grid-cols-3 gap-10 pt-4 -mb-6">
-
-```mermaid {scale: 0.5}
-sequenceDiagram
-    Alice->John: Hello John, how are you?
-    Note over Alice,John: A typical interaction
-```
-
-```mermaid {theme: 'neutral', scale: 0.8}
-graph TD
-B[Text] --> C{Decision}
-C -->|One| D[Result 1]
-C -->|Two| E[Result 2]
-```
-
-```plantuml {scale: 0.7}
-@startuml
-
-package "Some Group" {
-  HTTP - [First Component]
-  [Another Component]
-}
-
-node "Other Groups" {
-  FTP - [Second Component]
-  [First Component] --> FTP
-}
-
-cloud {
-  [Example 1]
-}
-
-
-database "MySql" {
-  folder "This is my folder" {
-    [Folder 3]
-  }
-  frame "Foo" {
-    [Frame 4]
-  }
-}
-
-
-[Another Component] --> [Example 1]
-[Example 1] --> [Folder 3]
-[Folder 3] --> [Frame 4]
-
-@enduml
-```
-
+<div class="w-full flex justify-center mt-8">
+  <img src="/render-tree.png" class="object-contain">
 </div>
 
-[Learn More](https://sli.dev/guide/syntax.html#diagrams)
-
-
 ---
-layout: center
-class: text-center
+layout: cover
+handle: 'tult'
+website: 'https://rikkeisoft.com'
 ---
 
-# Learn More
+# Parsing and external resources
 
-[Documentations](https://sli.dev) · [GitHub](https://github.com/slidevjs/slidev) · [Showcases](https://sli.dev/showcases.html)
+- **Parsing** the the process of reading HTML and constructing the DOM tree from it. <br> Hence this process is call **DOM parsing** and the program that does it is called **DOM parser**.
+- When the browser requests for a webpage and the server response with some HTML text. <br> It starts the parsing process as soon as few characters are available.
