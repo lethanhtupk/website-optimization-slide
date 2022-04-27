@@ -22,14 +22,14 @@ drawings:
 handle: 'tult'
 website: 'https://rikkeisoft.com'
 layout: 'intro'
-introImage: '/intro.jpg'
+introImage: '/intro1.png'
 ---
 
 # Website optimization
 
 How to improve the performance of a website
 
-<img src="/intro.jpg" class="absolute top-20 left-20 rounded-full w-80 h-80 object-cover p-2 bg-gradient-to-r from-fuchsia-700 to-purple-800 dark:from-white dark:to-purple-50">
+<img src="/intro1.png" class="absolute top-20 left-20 rounded-full w-80 h-80 object-cover p-2 bg-gradient-to-r from-fuchsia-700 to-purple-800 dark:from-white dark:to-purple-50">
 
 
 <!--
@@ -185,7 +185,73 @@ handle: 'tult'
 website: 'https://rikkeisoft.com'
 ---
 
-# Parsing and external resources
+# Parsing
 
-- **Parsing** the the process of reading HTML and constructing the DOM tree from it. <br> Hence this process is call **DOM parsing** and the program that does it is called **DOM parser**.
-- When the browser requests for a webpage and the server response with some HTML text. <br> It starts the parsing process as soon as few characters are available.
+- **Parsing** the the process of reading HTML and constructing the DOM tree from it.
+- The browser starts the parsing process as soon as it recevices few bytes of HTML document.
+- Because of that, the browser can build the DOM tree **incrementally**.
+
+<div class="w-full flex justify-center">
+  <img class="object-contain" src="/Parsing.png">
+</div>
+<p class="text-center text-xs">Parse raw HTML codes into a DOM tree</p>
+
+<!-- 
+- Quá trình parsing và xây dựng DOM tree gọi là DOM parsing 
+- Chương trình thực hiện quá trình trên gọi là DOM parser
+- Chạy demo trang web ở địa chỉ /html/incremental.html chứng minh incremental. Bật throttling để giảm tốc độ mạng
+1. Chú ý thanh cuộn càng ngàng càng ngắn
+2. Tích chọn capture screenshoots trong dev tools -> screenshoot ở sau có nhiều nội dung hơn screenshoot ở trước
+ -->
+
+---
+layout: cover
+handle: 'tult'
+website: 'https://rikkeisoft.com'
+---
+
+# External resources & parser-blocking script
+
+
+- Whenever the browser encounters a external resouces, it'll start download that file <br> in background **except** for script files. Hence script files are called **parser-blocking**.
+- DOM parsing is executed on the main thread and will not progress if that thread is busy.
+
+<br>
+
+<div class="flex flex-column justify-between items-center">
+  <div>
+    <cil-hand-point-right class="text-green-400" /> A script (JavaScript)
+  </div>
+  <div class="leading-10">
+    <p>Embedded scripts <ic-baseline-arrow-forward /> Executing the embedded codes on the main thread.</p>
+    <p>External script file <ic-baseline-arrow-forward /> Halt the execution of the main thread <br> until that file is downloaded and executed</p>
+  </div>
+</div>
+
+<ic-baseline-question-mark class="text-red-400 text-2xl mt-8" /> Halting the DOM parsing while the script file is being downloaded is unnecessary (in most cases). What is the solution ?
+
+<!-- 
+- Tại sao phải halt the main thread cho đến khi file script được download và thực thi xong ? 
+- Vì Browser cung cấp DOM API cho JavaScript runtime (React hoạt động bằng cách này) -> nếu DOM parsing và script được thực thi đồng thời 
+thì sẽ có thể gây ra tình trạng race conditions 
+-->
+
+---
+layout: cover
+handle: 'tult'
+website: 'https://rikkeisoft.com'
+---
+
+# Async & defer attributes
+
+- HTML5 provides us `async` and `defer` attribute for `script` tag.
+- With `async`, the parsing process won't be blocked while the file is being downloaded. And will be block right after the script file is ready to be executed.
+- With `defer`, the script doesn't execute even when the file is fully downloaded. All `defer` scripts are executed once the DOM is fully constructed.
+
+<!--
+Chạy demo cho blocking script ở địa chỉ http://localhost:8088/html/parser-blocking.html
+- Lưu ý: throttling network 
+- 1 script thường đc chèn vào sau 30 thẻ h1 -> in đc 30 thẻ h1 thì bị block
+- 1 defer script đc chèn sau 40 thẻ h1 -> in bình thường toàn bộ các thẻ h1 sau đó ms thực hiện script
+- thời điểm thực thi code có thể check bằng console.log
+-->
