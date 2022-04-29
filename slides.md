@@ -308,7 +308,7 @@ website: https://rikkeisoft.com
 # General rules
 
 1. Injecting stylesheet or required script files in the `<head>` tag of the HTML document. 
-2. Use `rel="preload"` to instrcut the browser to download key resources as soon as possible.
+2. Use `rel="preload"` to instruct the browser to download key resources as soon as possible.
 3. The best place to inject script files is the end of `<body>` tag.
 
 <!--
