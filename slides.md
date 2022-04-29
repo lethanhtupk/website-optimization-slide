@@ -38,9 +38,11 @@ The last comment block of each slide will be treated as slide notes. It will be 
 
 ---
 layout: table-contents
-gradientColors: ['#8EC5FC', '#E0C3FC']
-handle: 'tult'
-website: 'https://rikkeisoft.com'
+gradientColors:
+  - '#8EC5FC'
+  - '#E0C3FC'
+handle: tult
+website: https://rikkeisoft.com
 ---
 
 <style>
@@ -71,6 +73,7 @@ h1 {
   -moz-text-fill-color: transparent;
 }
 </style>
+
 
 ---
 layout: new-section
@@ -238,8 +241,8 @@ thì sẽ có thể gây ra tình trạng race conditions
 
 ---
 layout: cover
-handle: 'tult'
-website: 'https://rikkeisoft.com'
+handle: tult
+website: https://rikkeisoft.com
 ---
 
 # Async & defer attributes
@@ -254,4 +257,60 @@ Chạy demo cho blocking script ở địa chỉ http://localhost:8088/html/pars
 - 1 script thường đc chèn vào sau 30 thẻ h1 -> in đc 30 thẻ h1 thì bị block
 - 1 defer script đc chèn sau 40 thẻ h1 -> in bình thường toàn bộ các thẻ h1 sau đó ms thực hiện script
 - thời điểm thực thi code có thể check bằng console.log
+
+- Note: 
++ Vì async sẽ thực thi ngay khi tải xong file nên các file scripts ko thực thi theo thứ tự như trong file html 
++ defer thì sẽ thực thi theo thứ tự vì nó đợi đến khi pars
+-->
+
+---
+layout: cover
+handle: tult
+website: https://rikkeisoft.com
+---
+
+# Render-Blocking CSS
+
+- Render tree is getting built incrementally as the DOM tree is getting constructed.
+- The browser constructs the CSSOM tree from the stylesheet content
+- The CSSOM tree construction is **not incremental**
+
+<!--
+- Khi browser gặp thẻ style, browser sẽ parser toàn bộ CSS và update CSSOM tree. Sau đó nó tiếp tục quá trình DOM parsing. Tương tự cho inline style
+  
+- Đối với external stylesheet files. Không như HTML file, nó phải đợi cho toàn bộ file stylesheet được tải về rồi mới thực hiện parsing.(g)
+
+- Khi toàn bộ CSS rules đc process và CSSOM tree được update thì render tree ms đc update và render giao diện ra màn hình. Trong thời gian đó thì render tree bị halt.
+
+- Demo ở trang http://localhost:8088/html/render-blocking.html
+-->
+
+---
+layout: cover
+handle: tult
+website: https://rikkeisoft.com
+---
+
+# Script-Blocking CSS
+
+<uiw-question-circle class="text-red-500" /> Scenario where the browser start downloading the stylesheet file, then it encounter an external script file and start downloading it. 
+The script file is downloaded before the stylesheet file ? In this case, should the browser start executing the script?
+
+
+<ic-baseline-anchor class="text-green-600 mt-12" /> In conclusion, the browser may fully downloaded the script but will not execute it unless all the stylesheets before it are parsed. Those stylesheets are called script-blocking.
+
+---
+layout: cover
+handle: tult
+website: https://rikkeisoft.com
+---
+
+# General rules
+
+1. Injecting stylesheet or required script files in the `<head>` tag of the HTML document. 
+2. Use `rel="preload"` to instrcut the browser to download key resources as soon as possible.
+3. The best place to inject script files is the end of `<body>` tag.
+
+<!--
+- Vì HTML file được parse lần lượt và việc download script file ko block DOM construction. Nên càng tải sớm các file stylesheet thì giao điện được render càng sớm
 -->
