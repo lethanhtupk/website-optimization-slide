@@ -93,17 +93,26 @@ website: 'https://rikkeisoft.com'
 
 # Why speed matters?
 
-<cil-hand-point-right class="text-green-600" />
+<div v-click>
+  <cil-hand-point-right class="text-green-600" />
+  The longger a webpage takes to load, the more it bounce rate will skyrocket 
 The longger a webpage takes to load, the more it bounce rate will skyrocket 
-<mdi-rocket-launch class="text-red-600" /><br>
-<cil-hand-point-right class="text-green-600" />
-The high bounce rate tells search engines that this page is useless, so its ranking will slip
-<lucide-trending-down class="text-red-600" />
-<br>
-<div class="flex flex-row relative">
-  <img class="w-3/5 object-contain" src="/did-you-know.webp" />
-  <img class="absolute -right-36 -bottom-32 w-3/5 object-contain" src="/bounce-rate-statistics.webp" />
+  The longger a webpage takes to load, the more it bounce rate will skyrocket 
+  <mdi-rocket-launch class="text-red-600" /><br>
 </div>
+<div v-click>
+  <cil-hand-point-right class="text-green-600" />
+  The high bounce rate tells search engines that this page is useless, so its ranking will slip
+  <lucide-trending-down class="text-red-600" />
+</div>
+<div v-click>
+  <br>
+  <div class="flex flex-row relative">
+    <img class="w-3/5 object-contain" src="/did-you-know.webp" />
+    <img class="absolute -right-36 -bottom-32 w-3/5 object-contain" src="/bounce-rate-statistics.webp" />
+  </div>
+</div>
+
 
 ---
 layour: cover
@@ -115,7 +124,7 @@ website: 'https://rikkeisoft.com'
 
 - User's internet connection
 - Web hoisting and user's computer
-- The size of the resources that needed
+- The size of the resources that needed <fluent-target-arrow-24-regular class="text-red-600" v-click />
 
 
 ---
@@ -138,9 +147,11 @@ website: 'https://rikkeisoft.com'
 
 <div class="flex flex-row">
   <div class="w-2/3">
-    - DOM stands for document object model <br>
-    - When browser encounters a HTML element, it creates a JavaScript object called a node. <br>
-    - After create a node, the browser has to create a <span class="font-bold">tree-like structure</span> of created nodes.
+  <ul>
+    <li>DOM stands for document object model.</li>
+    <li>When browser encounters a HTML element, it creates a JavaScript object called a node.</li>
+    <li>After create a node, the browser has to create a <span class="font-bold">tree-like structure</span> of created nodes.</li>
+  </ul>
   </div>
   <div class="w-1/3 pl-4">
     <img class="object-contain" src="/DOM.png">
@@ -157,9 +168,11 @@ website: 'https://rikkeisoft.com'
 
 <div class="flex flex-row">
   <div class="w-2/3">
-    - CSSOM stands for CSS object model <br>
-    - After the browser has done constructing the DOM, it'll read CSS from all the sources (external, embedded, inline, user-agent, etc.) to construct CSSOM. <br>
-    - Each node in CSSOM tree contains the style information that will be applied to DOM elements that it target. 
+  <ul>
+    <li>CSSOM stands for CSS object model.</li>
+    <li>After the browser has done constructing the DOM, it'll read CSS from all the sources (external, embedded, inline, user-agent, etc.) to construct CSSOM.</li>
+    <li>Each node in CSSOM tree contains the style information that will be applied to DOM elements that it target.</li>
+  </ul>
   </div>
   <div class="w-1/3 pl-4">
     <img class="object-contain" src="/CSSOM.png">
@@ -231,7 +244,9 @@ website: 'https://rikkeisoft.com'
   </div>
 </div>
 
-<ic-baseline-question-mark class="text-red-400 text-2xl mt-8" /> Halting the DOM parsing while the script file is being downloaded is unnecessary (in most cases). What is the solution ?
+<div v-click>
+  <ic-baseline-question-mark class="text-red-400 text-2xl mt-8" /> Halting the DOM parsing while the script file is being downloaded is unnecessary (in most cases). What is the solution ?
+</div>
 
 <!-- 
 - Tại sao phải halt the main thread cho đến khi file script được download và thực thi xong ? 
@@ -293,11 +308,12 @@ website: https://rikkeisoft.com
 
 # Script-Blocking CSS
 
-<uiw-question-circle class="text-red-500" /> Scenario where the browser start downloading the stylesheet file, then it encounter an external script file and start downloading it. 
+<uiw-question-circle class="text-red-500 mt-8" /> Scenario where the browser start downloading the stylesheet file, then it encounter an external script file and start downloading it. 
 The script file is downloaded before the stylesheet file ? In this case, should the browser start executing the script?
 
-
-<ic-baseline-anchor class="text-green-600 mt-12" /> In conclusion, the browser may fully downloaded the script but will not execute it unless all the stylesheets before it are parsed. Those stylesheets are called script-blocking.
+<div v-click class="mt-12">
+  <ic-baseline-anchor class="text-green-600" /> In conclusion, the browser may fully downloaded the script but will not execute it unless all the stylesheets before it are parsed. Those stylesheets are called script-blocking.
+</div>
 
 ---
 layout: cover
