@@ -239,12 +239,18 @@ website: 'https://rikkeisoft.com'
     <cil-hand-point-right class="text-green-400" /> A script (JavaScript)
   </div>
   <div class="leading-10">
+  <div v-click="1">
+    <arrow x1="220" y1="290" x2="400" y2="260" color="#564" width="3" arrowSize="1"  />
     <p>Embedded scripts <ic-baseline-arrow-forward /> Executing the embedded codes on the main thread.</p>
+  </div>
+  <div v-click="2">
+    <arrow x1="220" y1="300" x2="400" y2="310" color="#564" width="3" arrowSize="1"  />
     <p>External script file <ic-baseline-arrow-forward /> Halt the execution of the main thread <br> until that file is downloaded and executed</p>
+  </div>
   </div>
 </div>
 
-<div v-click>
+<div v-click="3">
   <ic-baseline-question-mark class="text-red-400 text-2xl mt-8" /> Halting the DOM parsing while the script file is being downloaded is unnecessary (in most cases). What is the solution ?
 </div>
 
