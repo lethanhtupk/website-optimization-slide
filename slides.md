@@ -336,3 +336,80 @@ website: https://rikkeisoft.com
 <!--
 - Vì HTML file được parse lần lượt và việc download script file ko block DOM construction. Nên càng tải sớm các file stylesheet thì giao điện được render càng sớm
 -->
+
+---
+layout: new-section
+handle: 'tult'
+website: 'https://rikkeisoft.com'
+sectionImage: '/section-illustration.svg'
+---
+
+# Core web vitals
+
+The metrics to evaluate the user's experiences 
+
+---
+layout: cover
+handle: tult
+website: https://rikkeisoft.com
+---
+
+
+# Core web vitals 
+
+<div>
+  <img src="/core-web-vitals.png" />
+</div>
+
+<!-- Core web vitals là các metrics sử dụng để đánh giá 3 khía cạnh khi load một website đó là ....
+Tương ứng với mỗi khía cạnh là một metrics để đánh giá chungs đó là  -->
+
+
+---
+layout: cover
+handle: 'tult'
+website: 'https://rikkeisoft.com'
+---
+
+# Cumulative Layout Shift (CLS)
+
+CLS is the metrics to evaluate how much the page's content jumps around.
+
+<div v-click class="flex flex-row justity-center">
+  <video controls width="400" class="self-center">
+      <source src="/CLS.webm"
+              type="video/webm">
+  </video>
+</div>
+
+<!-- for a better web app performance, a minimal CLS score is the best  -->
+
+---
+layout: cover
+handle: 'tult'
+website: 'https://rikkeisoft.com'
+---
+
+# What causes poor CLS ? 
+
+<div class="relative">
+  <img v-click-hide src="/poor-CLS.png" />
+  <div v-after class="flex flex-row absolute top-1/2 left-1/4">
+    <h1 class="ml-1">How to improve CLS ?</h1>
+    <noto-thinking-face class="text-3xl mb-4 ml-2" />
+  </div>
+</div>
+
+<!-- 
+FOUT: flash of unstyled text 
+FOIT: flash of invisible text
+-->
+
+---
+layout: cover
+handle: 'tult'
+website: 'https://rikkeisoft.com'
+---
+
+
+# Always include width and height size attributes on images and video elemnts.
