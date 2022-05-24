@@ -413,3 +413,66 @@ website: 'https://rikkeisoft.com'
 
 
 # Always include width and height size attributes on images and video elemnts.
+
+---
+layout: cover
+handle: 'tult'
+website: 'https://rikkeisoft.com'
+---
+
+<div class="relative">
+  <video controls="controls" width="400" height="auto" name="Demo cls">
+    <source src="/demo-cls.mov">
+  </video>
+  <img src="/CLS-score.png" alt="cls score" class="absolute right-0 w-1/2 h-auto bottom-22">
+</div>
+
+---
+layout: cover
+handle: 'tult'
+website: 'https://rikkeisoft.com'
+---
+
+```html
+<!-- old best practice -->
+<img src="avatar.png" width="640" height="360" alt="avatar">
+
+<!-- response -->
+<img src="avatar.png" alt="avatar">
+
+<style>
+  img {
+    width: 100%;
+    height: aut;
+  }
+</style>
+```
+
+<!-- 
+Trước đây người ta dùng width / height property để set thuộc tính độ dài và độ rộng cho ảnh -> browser có thể preserve space cho ảnh trước cả khi chúng đc tải xong 
+-->
+
+---
+layout: cover
+handle: 'tult'
+website: 'https://rikkeisoft.com'
+---
+
+<div class="relative">
+  <video controls="controls" width="400" height="auto" name="Demo cls">
+    <source src="/demo-cls-after.mov">
+  </video>
+  <img src="/CLS-score-after.png" alt="cls score" class="absolute right-0 w-1/2 h-auto bottom-22">
+</div>
+
+<!-- - Làm thế nào để biết đc element nào khiến điểm CLS bị tăng lên ?  -->
+
+---
+layout: cover
+handle: 'tult'
+website: 'https://rikkeisoft.com'
+---
+
+# Find large layout shift elements
+
+<img src="/find-cls-elements.png" alt="find-cls-element" width="480" height="auto">
