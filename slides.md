@@ -412,7 +412,8 @@ website: 'https://rikkeisoft.com'
 ---
 
 
-# Always include width and height size attributes on images and video elemnts.
+# Tip #1
+##  Always include width and height size attributes on images and video elemnts.
 
 ---
 layout: cover
@@ -497,3 +498,23 @@ Thực hiện lazy loading cho image. Ý tưởng chung là sẽ sử dụng 1 c
 Trong thời gian image được load hoặc ở ngoài viewport -> sẽ hiển thị nội dung của container (background image, low quality image, ...)
 - Layzy loading có thể được implement bằng rất nhiều cách.
 -->
+
+---
+layout: cover
+handle: 'tult'
+website: 'https://rikkeisoft.com'
+---
+
+
+# Tip #2 
+## Reserve enough space for dynamic content like ads or promos.
+
+---
+layout: cover
+handle: 'tult'
+website: 'https://rikkeisoft.com'
+---
+
+
+# Tip #3
+## Avoid inserting new content above existing content.
