@@ -476,3 +476,24 @@ website: 'https://rikkeisoft.com'
 # Find large layout shift elements
 
 <img src="/find-cls-elements.png" alt="find-cls-element" width="480" height="auto">
+
+---
+layout: cover
+handle: 'tult'
+website: 'https://rikkeisoft.com'
+---
+
+# Approach to image loading
+
+<ic-sharp-report-problem class="text-red-600" /> <span class="text-red-600 font-bold">Problem:</span> <span>Creating empty space in the site and users don't know what things will come out from there</span> <fxemoji-ghost class="text-xl" />
+
+<div v-click>
+<el-idea-alt class="text-green-600" /> <span class="text-green-600 font-bold">Solution:</span>
+<iframe class="mt-2" width="560" height="315" src="https://www.youtube.com/embed/CPmNHj9a0JI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<!--
+Thực hiện lazy loading cho image. Ý tưởng chung là sẽ sử dụng 1 container bao lấy image. 
+Trong thời gian image được load hoặc ở ngoài viewport -> sẽ hiển thị nội dung của container (background image, low quality image, ...)
+- Layzy loading có thể được implement bằng rất nhiều cách.
+-->
