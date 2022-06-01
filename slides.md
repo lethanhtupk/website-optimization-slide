@@ -461,7 +461,7 @@ website: 'https://rikkeisoft.com'
 
 <div class="relative">
   <video controls="controls" width="400" height="auto" name="Demo cls">
-    <source src="/demo-cls-after.mov">
+    <source src="/Demo-cls-after.mov">
   </video>
   <img src="/CLS-score-after.png" alt="cls score" class="absolute right-0 w-1/2 h-auto bottom-22">
 </div>
