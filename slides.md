@@ -87,8 +87,8 @@ Website load time affects the number of visitors.
 
 ---
 layout: cover
-handle: 'tult'
-website: 'https://rikkeisoft.com'
+handle: tult
+website: https://rikkeisoft.com
 ---
 
 # Why speed matters?
@@ -113,6 +113,9 @@ The longger a webpage takes to load, the more it bounce rate will skyrocket
   </div>
 </div>
 
+<!--
+Bounce rate là tỉ lệ visitors chỉ xem 1 page duy nhất của website sau đó rời đi ngay
+-->
 
 ---
 layour: cover
