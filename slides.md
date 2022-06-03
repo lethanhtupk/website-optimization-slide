@@ -205,7 +205,7 @@ website: 'https://rikkeisoft.com'
 
 
 # Tip #1
-##  Always include width and height size attributes on images and video elemnts.
+##  Always include width and height size attributes on images and video elements.
 
 ---
 layout: cover
@@ -214,9 +214,10 @@ website: 'https://rikkeisoft.com'
 ---
 
 <div class="relative">
-  <video controls="controls" width="400" height="auto" name="Demo cls">
-    <source src="/demo-cls.mov">
-  </video>
+  <!-- <video controls="controls" width="400" height="auto" name="Demo cls">
+    <source src="/public/demo-cls.mov">
+  </video> -->
+  <img src="/demo-cls.gif" width="400" height="auto" />
   <img src="/CLS-score.png" alt="cls score" class="absolute right-0 w-1/2 h-auto bottom-22">
 </div>
 
@@ -252,9 +253,10 @@ website: 'https://rikkeisoft.com'
 ---
 
 <div class="relative">
-  <video controls="controls" width="400" height="auto" name="Demo cls">
-    <source src="/Demo-cls-after.mov">
-  </video>
+  <!-- <video controls="controls" width="400" height="auto" name="Demo cls">
+    <source src="/public/Demo-cls-after.mov">
+  </video> -->
+  <img src="/demo-cls-after.gif" width="400" height="auto" />
   <img src="/CLS-score-after.png" alt="cls score" class="absolute right-0 w-1/2 h-auto bottom-22">
 </div>
 
