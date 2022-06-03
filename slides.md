@@ -553,3 +553,24 @@ website: https://rikkeisoft.com
 <!--
 - Vì HTML file được parse lần lượt và việc download script file ko block DOM construction. Nên càng tải sớm các file stylesheet thì giao điện được render càng sớm
 -->
+
+
+---
+layout: cover
+handle: tult
+website: https://rikkeisoft.com
+---
+
+# Time for discussing <ph-smiley-bold class="text-green-400" /><ph-smiley-bold class="text-yellow-400" /> <ph-smiley-bold class="text-red-400" />
+
+
+---
+layout: cover
+handle: tult
+website: https://rikkeisoft.com
+---
+
+# First Input Delay (FID)
+
+
+<h3 v-click class="text-center mt-12 text-7xl">See ya next time <icon-park-outline-bye class="text-green-500 text-3xl" /></h3>
