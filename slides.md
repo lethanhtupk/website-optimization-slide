@@ -22,14 +22,14 @@ drawings:
 handle: 'tult'
 website: 'https://rikkeisoft.com'
 layout: 'intro'
-introImage: '/intro1.png'
+introImage: '/avatar.jpeg'
 ---
 
 # Website optimization
 
 How to improve the performance of a website
 
-<img src="/intro1.png" class="absolute top-20 left-20 rounded-full w-80 h-80 object-cover p-2 bg-gradient-to-r from-fuchsia-700 to-purple-800 dark:from-white dark:to-purple-50">
+<img src="/avatar.jpeg" class="absolute top-20 left-20 rounded-full w-80 h-80 object-cover p-2 bg-gradient-to-r from-fuchsia-700 to-purple-800 dark:from-white dark:to-purple-50">
 
 
 <!--
