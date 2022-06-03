@@ -126,217 +126,6 @@ website: 'https://rikkeisoft.com'
 - Web hoisting and user's computer
 - The size of the resources that needed <fluent-target-arrow-24-regular class="text-red-600" v-click />
 
-
----
-layout: new-section
-handle: 'tult'
-website: 'https://rikkeisoft.com'
----
-
-# How the browser render a webpage
-
-Deep dive into the rendering process and figure out where can be optimized.
-
----
-layout: cover
-handle: 'tult'
-website: 'https://rikkeisoft.com'
----
-
-# DOM
-
-<div class="flex flex-row">
-  <div class="w-2/3">
-  <ul>
-    <li>DOM stands for document object model.</li>
-    <li>When browser encounters a HTML element, it creates a JavaScript object called a node.</li>
-    <li>After create a node, the browser has to create a <span class="font-bold">tree-like structure</span> of created nodes.</li>
-  </ul>
-  </div>
-  <div class="w-1/3 pl-4">
-    <img class="object-contain" src="/DOM.png">
-  </div>
-</div>
-
----
-layout: cover
-andle: 'tult'
-website: 'https://rikkeisoft.com'
----
-
-# CSSOM
-
-<div class="flex flex-row">
-  <div class="w-2/3">
-  <ul>
-    <li>CSSOM stands for CSS object model.</li>
-    <li>After the browser has done constructing the DOM, it'll read CSS from all the sources (external, embedded, inline, user-agent, etc.) to construct CSSOM.</li>
-    <li>Each node in CSSOM tree contains the style information that will be applied to DOM elements that it target.</li>
-  </ul>
-  </div>
-  <div class="w-1/3 pl-4">
-    <img class="object-contain" src="/CSSOM.png">
-  </div>
-</div>
-
-
----
-layout: cover
-handle: 'tult'
-website: 'https://rikkeisoft.com'
----
-
-# Render tree
-
-- This is **tree-like structure** constructed by combining DOM and CSSOM trees together. 
-- The browser calculate the layout for each **visible elements** and paint them on the screen.
-
-<div class="w-full flex justify-center mt-8">
-  <img src="/render-tree.png" class="object-contain">
-</div>
-
----
-layout: cover
-handle: 'tult'
-website: 'https://rikkeisoft.com'
----
-
-# Parsing
-
-- **Parsing** the the process of reading HTML and constructing the DOM tree from it.
-- The browser starts the parsing process as soon as it recevices few bytes of HTML document.
-- Because of that, the browser can build the DOM tree **incrementally**.
-
-<div class="w-full flex justify-center">
-  <img class="object-contain" src="/Parsing.png">
-</div>
-<p class="text-center text-xs">Parse raw HTML codes into a DOM tree</p>
-
-<!-- 
-- Quá trình parsing và xây dựng DOM tree gọi là DOM parsing 
-- Chương trình thực hiện quá trình trên gọi là DOM parser
-- Chạy demo trang web ở địa chỉ /html/incremental.html chứng minh incremental. Bật throttling để giảm tốc độ mạng
-1. Chú ý thanh cuộn càng ngàng càng ngắn
-2. Tích chọn capture screenshoots trong dev tools -> screenshoot ở sau có nhiều nội dung hơn screenshoot ở trước
- -->
-
----
-layout: cover
-handle: 'tult'
-website: 'https://rikkeisoft.com'
----
-
-# External resources & parser-blocking script
-
-
-- Whenever the browser encounters a external resouces, it'll start download that file <br> in background **except** for script files. Hence script files are called **parser-blocking**.
-- DOM parsing is executed on the main thread and will not progress if that thread is busy.
-
-<br>
-
-<div class="flex flex-column justify-between items-center">
-  <div>
-    <cil-hand-point-right class="text-green-400" /> A script (JavaScript)
-  </div>
-  <div class="leading-10">
-  <div v-click="1">
-    <arrow x1="220" y1="290" x2="400" y2="260" color="#564" width="3" arrowSize="1"  />
-    <p>Embedded scripts <ic-baseline-arrow-forward /> Executing the embedded codes on the main thread.</p>
-  </div>
-  <div v-click="2">
-    <arrow x1="220" y1="300" x2="400" y2="310" color="#564" width="3" arrowSize="1"  />
-    <p>External script file <ic-baseline-arrow-forward /> Halt the execution of the main thread <br> until that file is downloaded and executed</p>
-  </div>
-  </div>
-</div>
-
-<div v-click="3">
-  <ic-baseline-question-mark class="text-red-400 text-2xl mt-8" /> Halting the DOM parsing while the script file is being downloaded is unnecessary (in most cases). What is the solution ?
-</div>
-
-<!-- 
-- Tại sao phải halt the main thread cho đến khi file script được download và thực thi xong ? 
-- Vì Browser cung cấp DOM API cho JavaScript runtime (React hoạt động bằng cách này) -> nếu DOM parsing và script được thực thi đồng thời 
-thì sẽ có thể gây ra tình trạng race conditions 
--->
-
----
-layout: cover
-handle: tult
-website: https://rikkeisoft.com
----
-
-# Async & defer attributes
-
-- HTML5 provides us `async` and `defer` attribute for `script` tag.
-- With `async`, the parsing process won't be blocked while the file is being downloaded. And will be block right after the script file is ready to be executed.
-- With `defer`, the script doesn't execute even when the file is fully downloaded. All `defer` scripts are executed once the DOM is fully constructed.
-
-<!--
-Chạy demo cho blocking script ở địa chỉ http://localhost:8088/html/parser-blocking.html
-- Lưu ý: throttling network 
-- 1 script thường đc chèn vào sau 30 thẻ h1 -> in đc 30 thẻ h1 thì bị block
-- 1 defer script đc chèn sau 40 thẻ h1 -> in bình thường toàn bộ các thẻ h1 sau đó ms thực hiện script
-- thời điểm thực thi code có thể check bằng console.log
-
-- Note: 
-+ Vì async sẽ thực thi ngay khi tải xong file nên các file scripts ko thực thi theo thứ tự như trong file html 
-+ defer thì sẽ thực thi theo thứ tự vì nó đợi đến khi pars
--->
-
----
-layout: cover
-handle: tult
-website: https://rikkeisoft.com
----
-
-# Render-Blocking CSS
-
-- Render tree is getting built incrementally as the DOM tree is getting constructed.
-- The browser constructs the CSSOM tree from the stylesheet content
-- The CSSOM tree construction is **not incremental**
-
-<!--
-- Khi browser gặp thẻ style, browser sẽ parser toàn bộ CSS và update CSSOM tree. Sau đó nó tiếp tục quá trình DOM parsing. Tương tự cho inline style
-  
-- Đối với external stylesheet files. Không như HTML file, nó phải đợi cho toàn bộ file stylesheet được tải về rồi mới thực hiện parsing.(g)
-
-- Khi toàn bộ CSS rules đc process và CSSOM tree được update thì render tree ms đc update và render giao diện ra màn hình. Trong thời gian đó thì render tree bị halt.
-
-- Demo ở trang http://localhost:8088/html/render-blocking.html
--->
-
----
-layout: cover
-handle: tult
-website: https://rikkeisoft.com
----
-
-# Script-Blocking CSS
-
-<uiw-question-circle class="text-red-500 mt-8" /> Scenario where the browser start downloading the stylesheet file, then it encounter an external script file and start downloading it. 
-The script file is downloaded before the stylesheet file ? In this case, should the browser start executing the script?
-
-<div v-click class="mt-12">
-  <ic-baseline-anchor class="text-green-600" /> In conclusion, the browser may fully downloaded the script but will not execute it unless all the stylesheets before it are parsed. Those stylesheets are called script-blocking.
-</div>
-
----
-layout: cover
-handle: tult
-website: https://rikkeisoft.com
----
-
-# General rules
-
-1. Injecting stylesheet or required script files in the `<head>` tag of the HTML document. 
-2. Use `rel="preload"` to instruct the browser to download key resources as soon as possible.
-3. The best place to inject script files is the end of `<body>` tag.
-
-<!--
-- Vì HTML file được parse lần lượt và việc download script file ko block DOM construction. Nên càng tải sớm các file stylesheet thì giao điện được render càng sớm
--->
-
 ---
 layout: new-section
 handle: 'tult'
@@ -518,3 +307,246 @@ website: 'https://rikkeisoft.com'
 
 # Tip #3
 ## Avoid inserting new content above existing content.
+
+---
+layout: cover
+handle: 'tult'
+website: 'https://rikkeisoft.com'
+---
+
+# Largest Contentful Paint (LCP)
+
+LCP is the time when the largent content on the page is rendered.
+<div class="w-full flex justify-center mt-4">
+  <img src="/LCP.png" class="w-1/2 h-auto" />
+</div>
+
+---
+layout: cover
+handle: 'tult'
+website: 'https://rikkeisoft.com'
+---
+
+
+<div>
+  <img src="/poor_LCP.png" />
+  <arrow v-click="1" x1="300" y1="500" x2="380" y2="420" color="red" width="3" arrowSize="1"  />
+</div>
+
+
+---
+layout: new-section
+handle: 'tult'
+website: 'https://rikkeisoft.com'
+---
+
+# How the browser render a webpage
+
+Deep dive into the rendering process and figure out where can be optimized.
+
+---
+layout: cover
+handle: 'tult'
+website: 'https://rikkeisoft.com'
+---
+
+# DOM
+
+<div class="flex flex-row">
+  <div class="w-2/3">
+  <ul>
+    <li>DOM stands for document object model.</li>
+    <li>When browser encounters a HTML element, it creates a JavaScript object called a node.</li>
+    <li>After create a node, the browser has to create a <span class="font-bold">tree-like structure</span> of created nodes.</li>
+  </ul>
+  </div>
+  <div class="w-1/3 pl-4">
+    <img class="object-contain" src="/DOM.png">
+  </div>
+</div>
+
+---
+layout: cover
+andle: 'tult'
+website: 'https://rikkeisoft.com'
+---
+
+# CSSOM
+
+<div class="flex flex-row">
+  <div class="w-2/3">
+  <ul>
+    <li>CSSOM stands for CSS object model.</li>
+    <li>After the browser has done constructing the DOM, it'll read CSS from all the sources (external, embedded, inline, user-agent, etc.) to construct CSSOM.</li>
+    <li>Each node in CSSOM tree contains the style information that will be applied to DOM elements that it target.</li>
+  </ul>
+  </div>
+  <div class="w-1/3 pl-4">
+    <img class="object-contain" src="/CSSOM.png">
+  </div>
+</div>
+
+
+---
+layout: cover
+handle: 'tult'
+website: 'https://rikkeisoft.com'
+---
+
+# Render tree
+
+- This is **tree-like structure** constructed by combining DOM and CSSOM trees together. 
+- The browser calculate the layout for each **visible elements** and paint them on the screen.
+
+<div class="w-full flex justify-center mt-8">
+  <img src="/render-tree.png" class="object-contain">
+</div>
+
+---
+layout: cover
+handle: 'tult'
+website: 'https://rikkeisoft.com'
+---
+
+# Parsing
+
+- **Parsing** the the process of reading HTML and constructing the DOM tree from it.
+- The browser starts the parsing process as soon as it recevices few bytes of HTML document.
+- Because of that, the browser can build the DOM tree **incrementally**.
+
+<div class="w-full flex justify-center">
+  <img class="object-contain" src="/Parsing.png">
+</div>
+<p class="text-center text-xs">Parse raw HTML codes into a DOM tree</p>
+
+<!-- 
+- Quá trình parsing và xây dựng DOM tree gọi là DOM parsing 
+- Chương trình thực hiện quá trình trên gọi là DOM parser
+- Chạy demo trang web ở địa chỉ /html/incremental.html chứng minh incremental. Bật throttling để giảm tốc độ mạng
+1. Chú ý thanh cuộn càng ngàng càng ngắn
+2. Tích chọn capture screenshoots trong dev tools -> screenshoot ở sau có nhiều nội dung hơn screenshoot ở trước
+ -->
+
+---
+layout: cover
+handle: 'tult'
+website: 'https://rikkeisoft.com'
+---
+
+# External resources & parser-blocking script
+
+
+- Whenever the browser encounters a external resouces, it'll start download that file <br> in background **except** for script files. Hence script files are called **parser-blocking**.
+- DOM parsing is executed on the main thread and will not progress if that thread is busy.
+
+<br>
+
+<div class="flex flex-column justify-between items-center">
+  <div>
+    <cil-hand-point-right class="text-green-400" /> A script (JavaScript)
+  </div>
+  <div class="leading-10">
+  <div v-click="1">
+    <arrow x1="220" y1="290" x2="400" y2="260" color="#564" width="3" arrowSize="1"  />
+    <p>Embedded scripts <ic-baseline-arrow-forward /> Executing the embedded codes on the main thread.</p>
+  </div>
+  <div v-click="2">
+    <arrow x1="220" y1="300" x2="400" y2="310" color="#564" width="3" arrowSize="1"  />
+    <p>External script file <ic-baseline-arrow-forward /> Halt the execution of the main thread <br> until that file is downloaded and executed</p>
+  </div>
+  </div>
+</div>
+
+<div v-click="3">
+  <ic-baseline-question-mark class="text-red-400 text-2xl mt-8" /> Halting the DOM parsing while the script file is being downloaded is unnecessary (in most cases). What is the solution ?
+</div>
+
+<!-- 
+- Tại sao phải halt the main thread cho đến khi file script được download và thực thi xong ? 
+- Vì Browser cung cấp DOM API cho JavaScript runtime (React hoạt động bằng cách này) -> nếu DOM parsing và script được thực thi đồng thời 
+thì sẽ có thể gây ra tình trạng race conditions 
+-->
+
+---
+layout: cover
+handle: tult
+website: https://rikkeisoft.com
+---
+
+# Async & defer attributes
+
+- HTML5 provides us `async` and `defer` attribute for `script` tag.
+- With `async`, the parsing process won't be blocked while the file is being downloaded. And will be block right after the script file is ready to be executed.
+- With `defer`, the script doesn't execute even when the file is fully downloaded. All `defer` scripts are executed once the DOM is fully constructed.
+
+<!--
+Chạy demo cho blocking script ở địa chỉ http://localhost:8088/html/parser-blocking.html
+- Lưu ý: throttling network 
+- Phải demo được cách hoạt động của async/await 
+Bước 1: Chạy với script đầu tiên ko đặt async/await -> render đc 30 thẻ thì bị block. Khi nào console.log in ra "Hello world" thì thấy bắt đầu in tiếp 
+Bước 2: Đặt async với script đầu tiên -> Thấy browser in được nhiều hơn 30 thẻ nhưng script vẫn chưa thấy in "Hello world" -> ko bị block
+Bước 3: Thấy script 2 in "Xin chao!!!" khi mà cái spiner trên tab của trình duyệt ngừng quay -> render xong hết rồi mới chạy script 
+
+- Demo test điểm lighthouse để thấy được sự khác biệt của async và defer
+-->
+
+---
+layout: cover
+handle: tult
+website: https://rikkeisoft.com
+---
+
+# Render-Blocking CSS
+
+- Render tree is getting built incrementally as the DOM tree is getting constructed.
+- The browser constructs the CSSOM tree from the stylesheet content
+- The CSSOM tree construction is **not incremental**
+
+<!--
+- Khi browser gặp thẻ style, browser sẽ parser toàn bộ CSS và update CSSOM tree. Sau đó nó tiếp tục quá trình DOM parsing. Tương tự cho inline style
+  
+- Đối với external stylesheet files. Không như HTML file, nó phải đợi cho toàn bộ file stylesheet được tải về rồi mới thực hiện parsing.(g)
+
+- Khi toàn bộ CSS rules đc process và CSSOM tree được update thì render tree ms đc update và render giao diện ra màn hình. Trong thời gian đó thì render tree bị halt.
+
+- Demo ở trang http://localhost:8088/html/render-blocking.html
+-->
+
+---
+layout: cover
+handle: tult
+website: https://rikkeisoft.com
+---
+
+# Script-Blocking CSS
+
+<uiw-question-circle class="text-red-500 mt-8" /> Scenario where the browser start downloading the stylesheet file, then it encounter an external script file and start downloading it. 
+The script file is downloaded before the stylesheet file ? In this case, should the browser start executing the script?
+
+<div v-click class="mt-12">
+  <ic-baseline-anchor class="text-green-600" /> In conclusion, the browser may fully downloaded the script but will not execute it unless all the stylesheets before it are parsed. Those stylesheets are called script-blocking.
+</div>
+
+<!--
+- Lý do là vì nếu script đc tải xong và thực hiện luôn. Nếu script access vào thuộc tính CSS của 1 DOM node. Sau đó stylesheet file đc tải xong và update lại thuộc tính đó thì giá trị lấy được trước đó sẽ bị sai. 
+- Demo ở trang http://localhost:8088/html/script-blocking.html
+
+1. Nhìn vào tab network, phần waterfall -> script file đã tải xong từ trước file stylesheet nhưng ko thấy in ra "Hello world" 
+2. Phải đến khi màu chữ đc đổi thì mới thấy in ra "Hello world"
+-->
+
+---
+layout: cover
+handle: tult
+website: https://rikkeisoft.com
+---
+
+# General rules
+
+1. Injecting stylesheet or required script files in the `<head>` tag of the HTML document. 
+2. Use `rel="preload"` to instruct the browser to download key resources as soon as possible.
+3. The best place to inject script files is the end of `<body>` tag.
+
+<!--
+- Vì HTML file được parse lần lượt và việc download script file ko block DOM construction. Nên càng tải sớm các file stylesheet thì giao điện được render càng sớm
+-->
