@@ -343,6 +343,7 @@ website: 'https://rikkeisoft.com'
 layout: new-section
 handle: 'tult'
 website: 'https://rikkeisoft.com'
+sectionImage: '/section-illustration.svg'
 ---
 
 # How the browser render a webpage
