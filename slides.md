@@ -55,7 +55,7 @@ website: https://rikkeisoft.com
 
 1. Why speed matters? 
 2. What factors affect website load time?
-3. How the browser renders a webpage?
+3. Core web vitals?
 
 <!--
 You can have `style` tag in markdown to override the style for the current page.
