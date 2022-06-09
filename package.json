@@ -10,7 +10,7 @@
     "@slidev/theme-default": "*",
     "@slidev/theme-seriph": "*",
     "colorette": "^2.0.16",
-    "slidev-theme-unicorn": "^1.0.21"
+    "slidev-theme-unicorn": "^1.1.1"
   },
   "name": "optimize-performance-slide"
 }
