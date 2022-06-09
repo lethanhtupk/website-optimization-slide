@@ -32,10 +32,6 @@ How to improve the performance of a website
 <img src="/avatar.jpeg" class="absolute top-20 left-20 rounded-full w-80 h-80 object-cover p-2 bg-gradient-to-r from-fuchsia-700 to-purple-800 dark:from-white dark:to-purple-50">
 
 
-<!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
--->
-
 ---
 layout: table-contents
 gradientColors:
@@ -95,9 +91,7 @@ website: https://rikkeisoft.com
 
 <div v-click>
   <cil-hand-point-right class="text-green-600" />
-  The longger a webpage takes to load, the more it bounce rate will skyrocket 
-The longger a webpage takes to load, the more it bounce rate will skyrocket 
-  The longger a webpage takes to load, the more it bounce rate will skyrocket 
+  The longer a webpage takes to load, the more it bounce rate will skyrocket 
   <mdi-rocket-launch class="text-red-600" /><br>
 </div>
 <div v-click>
@@ -125,9 +119,13 @@ website: 'https://rikkeisoft.com'
 
 # What factor affect website load time?
 
-- User's internet connection
-- Web hoisting and user's computer
-- The size of the resources that needed <fluent-target-arrow-24-regular class="text-red-600" v-click />
+<div v-click="1">
+  <ul>
+    <li>User's internet connection</li>
+    <li>Web server and user's computer</li>
+    <li>The size of the resources that needed <fluent-target-arrow-24-regular class="text-red-600" v-click="2" /></li>
+  </ul>
+</div>
 
 ---
 layout: new-section
@@ -312,6 +310,19 @@ website: 'https://rikkeisoft.com'
 
 # Tip #3
 ## Avoid inserting new content above existing content.
+
+---
+layout: cover
+handle: tult
+website: https://rikkeisoft.com
+---
+
+<div class="w-full items-center flex flex-col">
+  <h1>Discussion time!!!</h1>
+  <div class="text-3xl">
+    <ph-smiley-bold class="text-green-400" /><ph-smiley-bold class="text-yellow-400" /><ph-smiley-bold class="text-red-400" />
+  </div>
+</div>
 
 ---
 layout: cover
@@ -564,7 +575,12 @@ handle: tult
 website: https://rikkeisoft.com
 ---
 
-# Time for discussing <ph-smiley-bold class="text-green-400" /><ph-smiley-bold class="text-yellow-400" /> <ph-smiley-bold class="text-red-400" />
+<div class="w-full items-center flex flex-col">
+  <h1>Discussion time!!!</h1>
+  <div class="text-3xl">
+    <ph-smiley-bold class="text-green-400" /><ph-smiley-bold class="text-yellow-400" /><ph-smiley-bold class="text-red-400" />
+  </div>
+</div>
 
 
 ---
