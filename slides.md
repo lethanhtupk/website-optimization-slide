@@ -427,7 +427,7 @@ website: 'https://rikkeisoft.com'
 
 # Parsing
 
-- **Parsing** the the process of reading HTML and constructing the DOM tree from it.
+- **Parsing** is the process of reading HTML and constructing the DOM tree from it.
 - The browser starts the parsing process as soon as it recevices few bytes of HTML document.
 - Because of that, the browser can build the DOM tree **incrementally**.
 
